@@ -1,7 +1,11 @@
  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add New Item</button><br><br>
-
-
- <table class="table table-hover">
+<form class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search"><br>
+      </div>
+      <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+    </form>
+ <table class="table table-hover" >
 
       <tr>
         <th>Product ID</th>
@@ -24,7 +28,9 @@
             <td><?php echo $obj1->stock; ?></td>
             <td>"<img src="<?php echo base_url()?>/image/<?php echo $obj1->image; ?>"></td>
       			<td><?php echo $obj1->price; ?></td>
-            <td><a href="<?php echo base_url(); ?>index.php/home/delete" class="btn btn-info btn-sm ">Update</a><a href="<?php echo base_url(); ?>index.php/home/delete" class="btn btn-danger btn-">Delete</a></td>
+            <td><a href="<?php echo base_url();?>index.php/home/view/<?php echo $obj1->prdct_id; ?>" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-edit"></i></a>
+                               
+                <a href= "<?php echo base_url();?>index.php/home/delete/<?php echo $obj1->prdct_id; ?>" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></a></td>
       		</tr>
       	<?php
 
@@ -66,9 +72,9 @@
             </script>
     <input type="number" name="stock" class="form-control" onkeypress='return isNumberKey(event)'placeholder="Stock" required>
   </div>
-  <div class="form-group"><?php echo form_open_multipart('upload/do_upload');?>
+  <div class="form-group">
     <label>Product Image</label><br>
-       <input type="submit" value="upload" />
+      <input type="text" name="image" class="form-control" placeholder="Image" required>
   </div>
   <div class="form-group">
     <label>Price</label>
@@ -82,15 +88,35 @@
             </script>
     <input type="number" name="price" class="form-control" onkeypress='return isNumberKey(event)'placeholder="Price" required>
   </div>
-  <button type="submit" class="btn btn-success">Save</button><br><br>
+  <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i></button>  
+  <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i></button><br><br>
 </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        </div>
-      </div>
       
     </div>
   </div>
   
+       
+
+         
+                  <script>
+                  function myFunction() {
+                    // Declare variables 
+                    var input, filter, table, tr, td, i;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+
+                    // Loop through all table rows, and hide those who don't match the search query
+                    for (i = 0; i < tr.length; i++) {
+                      td = tr[i].getElementsByTagName("td")[0];
+                      if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                          tr[i].style.display = "";
+                        } else {
+                          tr[i].style.display = "none";
+                        }
+                      } 
+                    }
+                  }
+                  </script>

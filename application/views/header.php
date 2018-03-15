@@ -13,28 +13,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]--> 
+   <style>
+    table{
+
+    border-collapse: collapse;
+    width: 100%;
+
+
+    }
+      
+    #th {
+    height: 100%;
+    width: 100%;
+    background: #00ffcc; /* For browsers that do not support gradients */
+    background: linear-gradient(to bottom right, #00ffcc, white);
+    }
+    #body {
+    height: 100%;
+    background: #00ffcc; /* For browsers that do not support gradients */
+    background: linear-gradient(white, #00ffcc); /* Standard syntax (must be last) */
+    }
+    body{
+    height: 100%;
+    background: #99ffcc;
+    }
+
+
+
+
+
+   </style>
 
 
      </head>
   
 
-  <body>
+    <body>
     <br>
     <br>
     <br>
     <br>
-    <div class="container">
+    <div class="container" id="body">
     <h1>Annyeong! Just keep Click'N</h1>
 
    <nav class="navbar navbar-inverse navbar-fixed-top">
 
-  <div class="container">
+  <div class="container" id="th">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Clik N' PiK</a>
     </div>
@@ -43,12 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li><a href="#">About</a></li>
       <li><a href="#">Shop</a></li>
     </ul>
-    <form class="navbar-form navbar-right" action="/action_page.php">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-    </form>
+    
   </div>
 </nav>
 
